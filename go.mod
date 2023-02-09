@@ -1,4 +1,4 @@
-module github.com/turbonomic/turbo-crd
+module github.com/turbonomic/turbo-policy
 
 go 1.17
 
