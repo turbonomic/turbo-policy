@@ -44,6 +44,14 @@ spec:
                   scaleUp: Manual
                 description: The behavior of SLO driven horizontal scale actions
                 properties:
+                  resize:
+                    description: The Action mode of VerticalResize action
+                    enum:
+                    - Automatic
+                    - Manual
+                    - Recommend
+                    - Disabled
+                    type: string
                   scaleDown:
                     description: The Action mode of HorizontalScaleDown action
                     enum:
