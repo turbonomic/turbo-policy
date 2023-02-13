@@ -45,8 +45,10 @@ const (
 )
 
 type SamplePeriod struct {
-	Min MinObservationPeriod `json:"min,omitempty"`
-	Max MaxObservationPeriod `json:"max,omitempty"`
+	// +kubebuilder:validation:Enum=None;OneDay;ThreeDays;SevenDays
+	Min *MinObservationPeriod `json:"min,omitempty"`
+	// +kubebuilder:validation:Enum=Last90Days;Last30Days;Last7Days
+	Max *MaxObservationPeriod `json:"max,omitempty"`
 }
 
 // Aggressiveness sets how agressively Turbonomic will resize in response to resource utilization.
@@ -66,59 +68,61 @@ const (
 
 // LimitResourceConstraints defines the resize constraint for resource like CPU limit or Memory limit.
 type LimitResourceConstraint struct {
-	Max               string `json:"max,omitempty"`
-	Min               string `json:"min,omitempty"`
-	RecommendAboveMax bool   `json:"recommendAboveMax,omitempty"`
-	RecommendBelowMin bool   `json:"recommendBelowMin,omitempty"`
+	Max               *string `json:"max,omitempty"`
+	Min               *string `json:"min,omitempty"`
+	RecommendAboveMax *bool   `json:"recommendAboveMax,omitempty"`
+	RecommendBelowMin *bool   `json:"recommendBelowMin,omitempty"`
 }
 
 // RequestResourceConstraint defines the resize constraint for resource like CPU request or Memory request
 type RequestResourceConstraint struct {
-	Min               string `json:"min,omitempty"`
-	RecommendBelowMin bool   `json:"recommendBelowMin,omitempty"`
+	Min               *string `json:"min,omitempty"`
+	RecommendBelowMin *bool   `json:"recommendBelowMin,omitempty"`
 }
 
 // LimitResourceConstraints defines the resource constraints for CPU limit and Memory limit.
 type LimitResourceConstraints struct {
-	CPU    LimitResourceConstraint `json:"cpu,omitempty"`
-	Memory LimitResourceConstraint `json:"memory,omitempty"`
+	CPU    *LimitResourceConstraint `json:"cpu,omitempty"`
+	Memory *LimitResourceConstraint `json:"memory,omitempty"`
 }
 
 // RequestResourceConstraints defines the resource constraints for CPU request and Memory request
 type RequestResourceConstraints struct {
-	CPU    RequestResourceConstraint `json:"cpu,omitempty"`
-	Memory RequestResourceConstraint `json:"memory,omitempty"`
+	CPU    *RequestResourceConstraint `json:"cpu,omitempty"`
+	Memory *RequestResourceConstraint `json:"memory,omitempty"`
 }
 
 // Resize increment constants for CPU and Memory
 type ResizeIncrements struct {
-	CPU    string `json:"cpu,omitempty"`
-	Memory string `json:"memory,omitempty"`
+	CPU    *string `json:"cpu,omitempty"`
+	Memory *string `json:"memory,omitempty"`
 }
 
 // ContainerVerticalScaleSpec defines the desired state of ContainerVerticalScale
 type ContainerVerticalScaleSettings struct {
 	// +kubebuilder:default:={cpu:{max:"64", min:"500m", recommendAboveMax:true, recommendBelowMin:false}, memory:{max:"10Gi", min:"10Mi", recommendAboveMax:true, recommendBelowMin:true}}
 	// +optional
-	Limits LimitResourceConstraints `json:"limits,omitempty"`
+	Limits *LimitResourceConstraints `json:"limits,omitempty"`
 
 	// +kubebuilder:default:={cpu:{min:"10m", recommendBelowMin:false}, memory:{min:"10Mi", recommendBelowMin:true}}
 	// +optional
-	Requests RequestResourceConstraints `json:"requests,omitempty"`
+	Requests *RequestResourceConstraints `json:"requests,omitempty"`
 
 	// +kubebuilder:default:={cpu:"100m", memory:"100Mi"}
 	// +optional
-	Increments ResizeIncrements `json:"increments,omitempty"`
+	Increments *ResizeIncrements `json:"increments,omitempty"`
 
 	// +kubebuilder:default:={min:OneDay, max:Last30Days}
 	// +optional
-	ObservationPeriod SamplePeriod `json:"observationPeriod,omitempty"`
+	ObservationPeriod *SamplePeriod `json:"observationPeriod,omitempty"`
 
 	// +kubebuilder:default:=High
+	// +kubebuilder:validation:Enum=Low;Medium;High
 	// +optional
-	RateOfResize ResizeRate `json:"rateOfResize,omitempty"`
+	RateOfResize *ResizeRate `json:"rateOfResize,omitempty"`
 
 	// +kubebuilder:default:=P99
+	// +kubebuilder:validation:Enum=P90;P95;P99;P99_1;P99_5;P99_9;P100
 	// +optional
-	Aggressiveness PercentileAggressiveness `json:"aggressiveness,omitempty"`
+	Aggressiveness *PercentileAggressiveness `json:"aggressiveness,omitempty"`
 }
