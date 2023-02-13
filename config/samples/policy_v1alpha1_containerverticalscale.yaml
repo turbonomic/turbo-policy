@@ -28,17 +28,13 @@ spec:
       memory:
         min: 10Mi
         recommendBelowMin: true
-
     increments:
       cpu: 100m
       memory: 128M
-
     observationPeriod:
-      min: None
-      max: None
-
-    rateOfResize: High
-    agreesiveness: P99
-
+      min: 1d
+      max: 30d
+    rateOfResize: high
+    agreesiveness: p99
   behavior:
     resize: manual

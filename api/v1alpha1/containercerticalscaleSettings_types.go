@@ -20,9 +20,9 @@ package v1alpha1
 type ResizeRate string
 
 const (
-	Low    ResizeRate = "Low"
-	Medium ResizeRate = "Medium"
-	High   ResizeRate = "High"
+	Low    ResizeRate = "low"
+	Medium ResizeRate = "medium"
+	High   ResizeRate = "high"
 )
 
 // The sample period ensures historical data for a minimu numbers of days before calculationg Agressiveness.
@@ -30,18 +30,18 @@ const (
 type MinObservationPeriod string
 
 const (
-	None      MinObservationPeriod = "None"
-	OneDay    MinObservationPeriod = "1 Day"
-	ThreeDays MinObservationPeriod = "30 Days"
-	SevenDays MinObservationPeriod = "7 Days"
+	None      MinObservationPeriod = "none"
+	OneDay    MinObservationPeriod = "1d"
+	ThreeDays MinObservationPeriod = "3d"
+	SevenDays MinObservationPeriod = "7d"
 )
 
 type MaxObservationPeriod string
 
 const (
-	Last90Days MaxObservationPeriod = "Last 90 Days"
-	Last30Days MaxObservationPeriod = "1 Day"
-	Last7Days  MaxObservationPeriod = "Last 7 Days"
+	Last90Days MaxObservationPeriod = "90d"
+	Last30Days MaxObservationPeriod = "30d"
+	Last7Days  MaxObservationPeriod = "7d"
 )
 
 type SamplePeriod struct {
@@ -57,13 +57,13 @@ type SamplePeriod struct {
 type PercentileAggressiveness string
 
 const (
-	P90   PercentileAggressiveness = "P90"
-	P95   PercentileAggressiveness = "P95"
-	P99   PercentileAggressiveness = "P99"
-	P99_1 PercentileAggressiveness = "P99.1"
-	P99_5 PercentileAggressiveness = "P99.5"
-	P99_9 PercentileAggressiveness = "P99.9"
-	P100  PercentileAggressiveness = "P100"
+	P90   PercentileAggressiveness = "p90"
+	P95   PercentileAggressiveness = "p95"
+	P99   PercentileAggressiveness = "p99"
+	P99_1 PercentileAggressiveness = "p99.1"
+	P99_5 PercentileAggressiveness = "p99.5"
+	P99_9 PercentileAggressiveness = "p99.9"
+	P100  PercentileAggressiveness = "p100"
 )
 
 // LimitResourceConstraints defines the resize constraint for resource like CPU limit or Memory limit.
@@ -74,7 +74,8 @@ type LimitResourceConstraint struct {
 	RecommendBelowMin *bool   `json:"recommendBelowMin,omitempty"`
 }
 
-// RequestResourceConstraint defines the resize constraint for resource like CPU request or Memory request
+// RequestResourceConstraint defines the resize constraint for resource like CPU request or Memory request.
+// For now Turbo only generate resize down for CPU request and Memory request.
 type RequestResourceConstraint struct {
 	Min               *string `json:"min,omitempty"`
 	RecommendBelowMin *bool   `json:"recommendBelowMin,omitempty"`

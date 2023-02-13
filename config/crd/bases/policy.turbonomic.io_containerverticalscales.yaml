@@ -187,7 +187,9 @@ spec:
                     properties:
                       cpu:
                         description: RequestResourceConstraint defines the resize
-                          constraint for resource like CPU request or Memory request
+                          constraint for resource like CPU request or Memory request.
+                          For now Turbo only generate resize down for CPU request
+                          and Memory request.
                         properties:
                           min:
                             type: string
@@ -196,7 +198,9 @@ spec:
                         type: object
                       memory:
                         description: RequestResourceConstraint defines the resize
-                          constraint for resource like CPU request or Memory request
+                          constraint for resource like CPU request or Memory request.
+                          For now Turbo only generate resize down for CPU request
+                          and Memory request.
                         properties:
                           min:
                             type: string
