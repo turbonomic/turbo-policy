@@ -26,4 +26,8 @@ type PolicyTargetReference struct {
 	// The API version of the target referent
 	// +optional
 	APIVersion string `json:"apiVersion,omitempty"`
+
+	// The Name of the container need to be specified if the target is workload controller
+	// +optional
+	Container string `json:"container,omitempty"`
 }
