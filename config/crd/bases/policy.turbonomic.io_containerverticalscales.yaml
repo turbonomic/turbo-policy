@@ -94,8 +94,10 @@ spec:
                     description: Resize increment constants for CPU and Memory
                     properties:
                       cpu:
+                        pattern: ^[0-9]+(\.[0-9]+)?m?$
                         type: string
                       memory:
+                        pattern: ^[0-9]+(\.[0-9]+)?(Mi|Gi)$
                         type: string
                     type: object
                   limits:
@@ -105,6 +107,7 @@ spec:
                         min: 500m
                         recommendAboveMax: true
                         recommendBelowMin: false
+                        throttlingTolerance: 20%
                       memory:
                         max: 10Gi
                         min: 10Mi
@@ -114,25 +117,36 @@ spec:
                       for CPU limit and Memory limit.
                     properties:
                       cpu:
-                        description: LimitResourceConstraints defines the resize constraint
-                          for resource like CPU limit or Memory limit.
+                        description: CpuLimitResourceConstraint defines the resize
+                          constraint for CPU limit.
                         properties:
                           max:
+                            pattern: ^[0-9]+(\.[0-9]+)?m?$
                             type: string
                           min:
+                            pattern: ^[0-9]+(\.[0-9]+)?m?$
                             type: string
                           recommendAboveMax:
                             type: boolean
                           recommendBelowMin:
                             type: boolean
+                          throttlingTolerance:
+                            description: MaxThrottlingTolerance defines the acceptable
+                              level of throttling and directly impacts the resize
+                              actions generated on CPU Limits. The value ranges from
+                              0% to 70%
+                            pattern: ^(?:[0-6]?[0-9]|70|\b0)%$
+                            type: string
                         type: object
                       memory:
-                        description: LimitResourceConstraints defines the resize constraint
-                          for resource like CPU limit or Memory limit.
+                        description: MemoryResourceConstraint defines the resize constraint
+                          for Memory limit.
                         properties:
                           max:
+                            pattern: ^[0-9]+(\.[0-9]+)?(Mi|Gi)$
                             type: string
                           min:
+                            pattern: ^[0-9]+(\.[0-9]+)?(Mi|Gi)$
                             type: string
                           recommendAboveMax:
                             type: boolean
@@ -186,23 +200,23 @@ spec:
                       for CPU request and Memory request
                     properties:
                       cpu:
-                        description: RequestResourceConstraint defines the resize
-                          constraint for resource like CPU request or Memory request.
-                          For now Turbo only generate resize down for CPU request
-                          and Memory request.
+                        description: CpuRequestResourceConstraint defines the resize
+                          constraint for CPU request. For now Turbo only generate
+                          resize down for CPU request.
                         properties:
                           min:
+                            pattern: ^[0-9]+(\.[0-9]+)?m?$
                             type: string
                           recommendBelowMin:
                             type: boolean
                         type: object
                       memory:
-                        description: RequestResourceConstraint defines the resize
-                          constraint for resource like CPU request or Memory request.
-                          For now Turbo only generate resize down for CPU request
-                          and Memory request.
+                        description: CpuRequestResourceConstraint defines the resize
+                          constraint for Memory request. For now Turbo only generate
+                          resize down for Memory request.
                         properties:
                           min:
+                            pattern: ^[0-9]+(\.[0-9]+)?(Mi|Gi)$
                             type: string
                           recommendBelowMin:
                             type: boolean

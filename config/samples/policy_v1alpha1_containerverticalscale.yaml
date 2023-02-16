@@ -16,6 +16,7 @@ spec:
         min: 500m
         recommendAboveMax: true
         recommendBelowMin: false
+        throttlinngTolerance: 20%
       memory:   
         max: 10Gi
         min: 10Mi
@@ -30,7 +31,7 @@ spec:
         recommendBelowMin: true
     increments:
       cpu: 100m
-      memory: 128M
+      memory: 128Mi
     observationPeriod:
       min: 1d
       max: 30d
