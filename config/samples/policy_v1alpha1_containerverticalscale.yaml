@@ -16,7 +16,7 @@ spec:
         min: 500m
         recommendAboveMax: true
         recommendBelowMin: false
-        throttlinngTolerance: 20%
+        throttlingTolerance: 20%
       memory:   
         max: 10Gi
         min: 10Mi
