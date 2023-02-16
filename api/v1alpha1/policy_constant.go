@@ -55,3 +55,12 @@ const (
 	P99_9 PercentileAggressiveness = "p99.9"
 	P100  PercentileAggressiveness = "p100"
 )
+
+type ActionMode string
+
+const (
+	Automatic ActionMode = "Automatic"
+	Manual    ActionMode = "Manual"
+	Recommend ActionMode = "Recommend"
+	Disabled  ActionMode = "Disabled"
+)

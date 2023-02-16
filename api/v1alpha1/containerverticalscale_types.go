@@ -19,7 +19,7 @@ import (
 
 // ContainerVerticalScaleSpec defines the desired state of ContainerVerticalScale
 type ContainerVerticalScaleSpec struct {
-	Settings ContainerVerticalScaleSettings `json:"settings,omitempty"`
+	Settings ContainerVerticalScalePolicySettings `json:"settings,omitempty"`
 
 	// The behavior of vertical resize actions
 	// +kubebuilder:default:={resize:Manual}

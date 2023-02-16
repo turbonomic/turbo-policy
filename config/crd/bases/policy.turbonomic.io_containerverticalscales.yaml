@@ -87,6 +87,13 @@ spec:
                     - P99_9
                     - P100
                     type: string
+                  cpuThrottlingTolerance:
+                    default: 20%
+                    description: CpuThrottlingTolerance defines the acceptable level
+                      of throttling and directly impacts the resize actions generated
+                      on CPU Limits. The value ranges from 0% to 70%
+                    pattern: ^(?:[0-6]?[0-9]|70|\b0)%$
+                    type: string
                   increments:
                     default:
                       cpu: 100m
@@ -107,7 +114,6 @@ spec:
                         min: 500m
                         recommendAboveMax: true
                         recommendBelowMin: false
-                        throttlingTolerance: 20%
                       memory:
                         max: 10Gi
                         min: 10Mi
@@ -130,13 +136,6 @@ spec:
                             type: boolean
                           recommendBelowMin:
                             type: boolean
-                          throttlingTolerance:
-                            description: MaxThrottlingTolerance defines the acceptable
-                              level of throttling and directly impacts the resize
-                              actions generated on CPU Limits. The value ranges from
-                              0% to 70%
-                            pattern: ^(?:[0-6]?[0-9]|70|\b0)%$
-                            type: string
                         type: object
                       memory:
                         description: MemoryResourceConstraint defines the resize constraint

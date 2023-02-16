@@ -16,7 +16,6 @@ spec:
         min: 500m
         recommendAboveMax: true
         recommendBelowMin: false
-        throttlingTolerance: 20%
       memory:   
         max: 10Gi
         min: 10Mi
@@ -37,5 +36,6 @@ spec:
       max: 30d
     rateOfResize: high
     agreesiveness: p99
+    cpuThrottlingTolerance: 20%
   behavior:
     resize: manual

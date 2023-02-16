@@ -16,15 +16,6 @@ limitations under the License.
 
 package v1alpha1
 
-type ActionMode string
-
-const (
-	Automatic ActionMode = "Automatic"
-	Manual    ActionMode = "Manual"
-	Recommend ActionMode = "Recommend"
-	Disabled  ActionMode = "Disabled"
-)
-
 // ActionBehavior defines the action type and its corresponding mode
 type ActionBehavior struct {
 	// The Action mode of HorizontalScaleUp action

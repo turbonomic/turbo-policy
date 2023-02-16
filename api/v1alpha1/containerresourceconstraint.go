@@ -5,13 +5,9 @@ type CpuLimitResourceConstraint struct {
 	// +kubebuilder:validation:Pattern:=`^[0-9]+(\.[0-9]+)?m?$`
 	Max *string `json:"max,omitempty"`
 	// +kubebuilder:validation:Pattern:=`^[0-9]+(\.[0-9]+)?m?$`
-	Min *string `json:"min,omitempty"`
-	// MaxThrottlingTolerance defines the acceptable level of throttling and directly impacts the resize actions generated on CPU Limits.
-	// The value ranges from 0% to 70%
-	// +kubebuilder:validation:Pattern:=`^(?:[0-6]?[0-9]|70|\b0)%$`
-	ThrottlingTolerance *string `json:"throttlingTolerance,omitempty"`
-	RecommendAboveMax   *bool   `json:"recommendAboveMax,omitempty"`
-	RecommendBelowMin   *bool   `json:"recommendBelowMin,omitempty"`
+	Min               *string `json:"min,omitempty"`
+	RecommendAboveMax *bool   `json:"recommendAboveMax,omitempty"`
+	RecommendBelowMin *bool   `json:"recommendBelowMin,omitempty"`
 }
 
 // MemoryResourceConstraint defines the resize constraint for Memory limit.
