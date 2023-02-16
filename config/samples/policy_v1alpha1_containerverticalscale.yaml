@@ -35,7 +35,7 @@ spec:
       min: 1d
       max: 30d
     rateOfResize: high
-    agreesiveness: p99
+    agressiveness: p99
     cpuThrottlingTolerance: 20%
   behavior:
     resize: manual
