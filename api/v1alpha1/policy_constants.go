@@ -1,15 +1,5 @@
 package v1alpha1
 
-// MEMORY_VALUE_PATTERN is a regular expression that matches valid memory values.
-// The expected format is a positive integer, optionally followed by a decimal point and more digits,
-// followed by either "Mi" (mebibytes) or "Gi" (gibibytes).
-const MEMORY_VALUE_PATTERN string = `^[0-9]+(\.[0-9]+)?(Mi|Gi)$`
-
-// cpuPattern is a regular expression that matches strings representing CPU resources in Kubernetes.
-// The format of the string is a decimal number followed by an optional "m" suffix, which stands for milli-cores.
-// Examples of valid CPU resources are: "1", "1000m", "0.5", "500m", etc.
-const CPU_VALUE_PATTERN1 string = `^[0-9]+(\.[0-9]+)?m?$`
-
 // Resize rate
 // Low: resize by a single incremental only
 // Medium: resize steps are 1/4 of the difference between the current and optimal siz

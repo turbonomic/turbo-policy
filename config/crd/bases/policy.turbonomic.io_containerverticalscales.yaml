@@ -71,7 +71,7 @@ spec:
                   of ContainerVerticalScale
                 properties:
                   aggressiveness:
-                    default: P99
+                    default: p99
                     description: Aggressiveness sets how agressively Turbonomic will
                       resize in response to resource utilization. For example, assume
                       a 95 percentile. The percentile utilization is the highest value
@@ -79,13 +79,13 @@ spec:
                       actions can resize to a value that is below occational utilization
                       spikes.
                     enum:
-                    - P90
-                    - P95
-                    - P99
-                    - P99_1
-                    - P99_5
-                    - P99_9
-                    - P100
+                    - p90
+                    - p95
+                    - p99
+                    - p99_1
+                    - p99_5
+                    - p99_9
+                    - p100
                     type: string
                   cpuThrottlingTolerance:
                     default: 20%
@@ -116,7 +116,7 @@ spec:
                   limits:
                     default:
                       cpu:
-                        max: "64"
+                        max: 64
                         min: 500m
                         recommendAboveMax: true
                         recommendBelowMin: false
@@ -173,14 +173,14 @@ spec:
                     type: object
                   observationPeriod:
                     default:
-                      max: Last30Days
-                      min: OneDay
+                      max: 30d
+                      min: 1d
                     properties:
                       max:
                         enum:
-                        - Last90Days
-                        - Last30Days
-                        - Last7Days
+                        - 90d
+                        - 30d
+                        - 7d
                         type: string
                       min:
                         description: The sample period ensures historical data for
@@ -188,22 +188,22 @@ spec:
                           This ensures a minimum set of data points before the action
                           is generated.
                         enum:
-                        - None
-                        - OneDay
-                        - ThreeDays
-                        - SevenDays
+                        - none
+                        - 1d
+                        - 3d
+                        - 7d
                         type: string
                     type: object
                   rateOfResize:
-                    default: High
+                    default: high
                     description: 'Resize rate Low: resize by a single incremental
                       only Medium: resize steps are 1/4 of the difference between
                       the current and optimal siz High: resize steps are calculated
                       to the optomcal size'
                     enum:
-                    - Low
-                    - Medium
-                    - High
+                    - low
+                    - medium
+                    - high
                     type: string
                   requests:
                     default:

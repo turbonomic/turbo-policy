@@ -16,8 +16,10 @@ limitations under the License.
 
 package v1alpha1
 
-import v1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
-import "k8s.io/apimachinery/pkg/api/resource"
+import (
+	v1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
+	"k8s.io/apimachinery/pkg/api/resource"
+)
 
 const (
 	ResponseTime = "ResponseTime"
@@ -33,9 +35,9 @@ type SLOHorizontalScalePolicySetting struct {
 }
 
 type SamplePeriod struct {
-	// +kubebuilder:validation:Enum=None;OneDay;ThreeDays;SevenDays
+	// +kubebuilder:validation:Enum="none";"1d";"3d";"7d"
 	Min *MinObservationPeriod `json:"min,omitempty"`
-	// +kubebuilder:validation:Enum=Last90Days;Last30Days;Last7Days
+	// +kubebuilder:validation:Enum="90d";"30d";"7d"
 	Max *MaxObservationPeriod `json:"max,omitempty"`
 }
 
@@ -47,7 +49,7 @@ type ResizeIncrements struct {
 
 // ContainerVerticalScaleSpec defines the desired state of ContainerVerticalScale
 type ContainerVerticalScalePolicySettings struct {
-	// +kubebuilder:default:={cpu:{max:"64", min:"500m", recommendAboveMax:true, recommendBelowMin:false}, memory:{max:"10Gi", min:"10Mi", recommendAboveMax:true, recommendBelowMin:true}}
+	// +kubebuilder:default:={cpu:{max:64, min:"500m", recommendAboveMax:true, recommendBelowMin:false}, memory:{max:"10Gi", min:"10Mi", recommendAboveMax:true, recommendBelowMin:true}}
 	// +optional
 	Limits *LimitResourceConstraints `json:"limits,omitempty"`
 
@@ -59,17 +61,17 @@ type ContainerVerticalScalePolicySettings struct {
 	// +optional
 	Increments *ResizeIncrements `json:"increments,omitempty"`
 
-	// +kubebuilder:default:={min:OneDay, max:Last30Days}
+	// +kubebuilder:default:={min:"1d", max:"30d"}
 	// +optional
 	ObservationPeriod *SamplePeriod `json:"observationPeriod,omitempty"`
 
-	// +kubebuilder:default:=High
-	// +kubebuilder:validation:Enum=Low;Medium;High
+	// +kubebuilder:default:="high"
+	// +kubebuilder:validation:Enum="low";"medium";"high"
 	// +optional
 	RateOfResize *ResizeRate `json:"rateOfResize,omitempty"`
 
-	// +kubebuilder:default:=P99
-	// +kubebuilder:validation:Enum=P90;P95;P99;P99_1;P99_5;P99_9;P100
+	// +kubebuilder:default:="p99"
+	// +kubebuilder:validation:Enum="p90";"p95";"p99";"p99_1";"p99_5";"p99_9";"p100"
 	// +optional
 	Aggressiveness *PercentileAggressiveness `json:"aggressiveness,omitempty"`
 
