@@ -101,11 +101,17 @@ spec:
                     description: Resize increment constants for CPU and Memory
                     properties:
                       cpu:
-                        pattern: ^[0-9]+(\.[0-9]+)?m?$
-                        type: string
+                        anyOf:
+                        - type: integer
+                        - type: string
+                        pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                        x-kubernetes-int-or-string: true
                       memory:
-                        pattern: ^[0-9]+(\.[0-9]+)?(Mi|Gi)$
-                        type: string
+                        anyOf:
+                        - type: integer
+                        - type: string
+                        pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                        x-kubernetes-int-or-string: true
                     type: object
                   limits:
                     default:
@@ -123,30 +129,42 @@ spec:
                       for CPU limit and Memory limit.
                     properties:
                       cpu:
-                        description: CpuLimitResourceConstraint defines the resize
-                          constraint for CPU limit.
+                        description: LimitResourceConstraint defines the resize constraint
+                          for CPU limit or Memory Limit
                         properties:
                           max:
-                            pattern: ^[0-9]+(\.[0-9]+)?m?$
-                            type: string
+                            anyOf:
+                            - type: integer
+                            - type: string
+                            pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                            x-kubernetes-int-or-string: true
                           min:
-                            pattern: ^[0-9]+(\.[0-9]+)?m?$
-                            type: string
+                            anyOf:
+                            - type: integer
+                            - type: string
+                            pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                            x-kubernetes-int-or-string: true
                           recommendAboveMax:
                             type: boolean
                           recommendBelowMin:
                             type: boolean
                         type: object
                       memory:
-                        description: MemoryResourceConstraint defines the resize constraint
-                          for Memory limit.
+                        description: LimitResourceConstraint defines the resize constraint
+                          for CPU limit or Memory Limit
                         properties:
                           max:
-                            pattern: ^[0-9]+(\.[0-9]+)?(Mi|Gi)$
-                            type: string
+                            anyOf:
+                            - type: integer
+                            - type: string
+                            pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                            x-kubernetes-int-or-string: true
                           min:
-                            pattern: ^[0-9]+(\.[0-9]+)?(Mi|Gi)$
-                            type: string
+                            anyOf:
+                            - type: integer
+                            - type: string
+                            pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                            x-kubernetes-int-or-string: true
                           recommendAboveMax:
                             type: boolean
                           recommendBelowMin:
@@ -199,24 +217,30 @@ spec:
                       for CPU request and Memory request
                     properties:
                       cpu:
-                        description: CpuRequestResourceConstraint defines the resize
-                          constraint for CPU request. For now Turbo only generate
-                          resize down for CPU request.
+                        description: RequestResourceConstraint defines the resize
+                          constraint for CPU request and Memory quest. For now Turbo
+                          only generate resize down for CPU and Memory request.
                         properties:
                           min:
-                            pattern: ^[0-9]+(\.[0-9]+)?m?$
-                            type: string
+                            anyOf:
+                            - type: integer
+                            - type: string
+                            pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                            x-kubernetes-int-or-string: true
                           recommendBelowMin:
                             type: boolean
                         type: object
                       memory:
-                        description: CpuRequestResourceConstraint defines the resize
-                          constraint for Memory request. For now Turbo only generate
-                          resize down for Memory request.
+                        description: RequestResourceConstraint defines the resize
+                          constraint for CPU request and Memory quest. For now Turbo
+                          only generate resize down for CPU and Memory request.
                         properties:
                           min:
-                            pattern: ^[0-9]+(\.[0-9]+)?(Mi|Gi)$
-                            type: string
+                            anyOf:
+                            - type: integer
+                            - type: string
+                            pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                            x-kubernetes-int-or-string: true
                           recommendBelowMin:
                             type: boolean
                         type: object

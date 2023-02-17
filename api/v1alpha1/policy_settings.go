@@ -17,13 +17,14 @@ limitations under the License.
 package v1alpha1
 
 import v1 "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
+import "k8s.io/apimachinery/pkg/api/resource"
 
 const (
 	ResponseTime = "ResponseTime"
 	Transaction  = "Transaction"
 )
 
-type SloHorizontalScalePolicySetting struct {
+type SLOHorizontalScalePolicySetting struct {
 	// The name of the policy setting
 	Name string `json:"name"`
 
@@ -40,10 +41,8 @@ type SamplePeriod struct {
 
 // Resize increment constants for CPU and Memory
 type ResizeIncrements struct {
-	// +kubebuilder:validation:Pattern:=`^[0-9]+(\.[0-9]+)?m?$`
-	CPU *string `json:"cpu,omitempty"`
-	// +kubebuilder:validation:Pattern:=`^[0-9]+(\.[0-9]+)?(Mi|Gi)$`
-	Memory *string `json:"memory,omitempty"`
+	CPU    *resource.Quantity `json:"cpu,omitempty"`
+	Memory *resource.Quantity `json:"memory,omitempty"`
 }
 
 // ContainerVerticalScaleSpec defines the desired state of ContainerVerticalScale
