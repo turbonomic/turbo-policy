@@ -57,6 +57,10 @@ spec:
                     apiVersion:
                       description: The API version of the target referent
                       type: string
+                    container:
+                      description: The Name of the container need to be specified
+                        if the target is workload controller
+                      type: string
                     kind:
                       description: The Kind of the target referent
                       type: string
