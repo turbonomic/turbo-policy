@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/part-of: turbo-policy
     app.kubernetes.io/managed-by: kustomize
     app.kubernetes.io/created-by: turbo-policy
-  name: container-verticals-cale-sample
+  name: container-vertical-scale-sample
 spec:
   settings:
     limits:
