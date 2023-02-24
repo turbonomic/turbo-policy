@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/part-of: turbo-policy
     app.kubernetes.io/managed-by: kustomize
     app.kubernetes.io/created-by: turbo-policy
-  name: containerverticalscale-sample
+  name: container-vertical-scale-sample
 spec:
   settings:
     limits:
@@ -38,4 +38,4 @@ spec:
     aggressiveness: p99
     cpuThrottlingTolerance: 20%
   behavior:
-    resize: manual
+    resize: Manual

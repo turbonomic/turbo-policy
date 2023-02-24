@@ -3,7 +3,7 @@
 apiVersion: policy.turbonomic.io/v1alpha1
 kind: PolicyBinding
 metadata:
-  name: policy-binding-sample
+  name: policy-binding-slo-sample
 spec:
   # The reference to the SLOHorizontalScale policy
   policyRef:
