@@ -2,7 +2,7 @@
 apiVersion: policy.turbonomic.io/v1alpha1
 kind: PolicyBinding
 metadata:
-  name: policy-binding-sample
+  name: policy-binding-container-verticalscale-sample
 spec:
   # The reference to the ContainerVerticalScale policy
   policyRef:
