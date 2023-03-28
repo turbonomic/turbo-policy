@@ -97,7 +97,7 @@ spec:
                   increments:
                     default:
                       cpu: 100m
-                      memory: 100Mi
+                      memory: 128M
                     description: Resize increment constants for CPU and Memory
                     properties:
                       cpu:
@@ -121,8 +121,8 @@ spec:
                         recommendAboveMax: true
                         recommendBelowMin: false
                       memory:
-                        max: 10Gi
-                        min: 10Mi
+                        max: 104857M
+                        min: 10M
                         recommendAboveMax: true
                         recommendBelowMin: true
                     description: LimitResourceConstraints defines the resource constraints
@@ -211,7 +211,7 @@ spec:
                         min: 10m
                         recommendBelowMin: false
                       memory:
-                        min: 10Mi
+                        min: 10M
                         recommendBelowMin: true
                     description: RequestResourceConstraints defines the resource constraints
                       for CPU request and Memory request
