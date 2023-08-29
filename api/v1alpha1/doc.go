@@ -1,5 +1,5 @@
 // Copyright 2023 Turbonomic
-// 
+//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -29,6 +29,5 @@ For more infomation about Vertical Scaling Policies, see the [official documenta
 # Examples
 
 Sample policy and policy binding CustomResources can be found [here/https://github.com/turbonomic/turbo-policy/tree/main/config/samples]
-
 */
 package v1alpha1
