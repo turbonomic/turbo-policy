@@ -28,7 +28,7 @@ For more infomation about Vertical Scaling Policies, see the official [Container
 
 # Examples
 
-Sample policy and policy binding CustomResources can be found [here]
+Sample policy and policy binding CustomResources can be found [here].
 
 [Kubernetes Service Policies]: https://www.ibm.com/docs/en/tarm/latest?topic=service-kubernetes-policies#policy_defaults_Service_K8s__CRK8s__title__1
 [Container Spec Policies]: https://www.ibm.com/docs/en/tarm/latest?topic=spec-container-policies
