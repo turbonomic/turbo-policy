@@ -34,4 +34,4 @@ Sample policy and policy binding CustomResources can be found [here].
 [Container Spec Policies]: https://www.ibm.com/docs/en/tarm/latest?topic=spec-container-policies
 [here]: https://github.com/turbonomic/turbo-policy/tree/main/config/samples
 */
-package v1alpha1
+package main
