@@ -12,7 +12,7 @@ metadata:
   name: containerverticalscale-editor-role
 rules:
 - apiGroups:
-  - policy.turbonomic.io
+  - policy.turbonomic.io.turbonomic.io
   resources:
   - containerverticalscales
   verbs:
@@ -24,7 +24,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - policy.turbonomic.io
+  - policy.turbonomic.io.turbonomic.io
   resources:
   - containerverticalscales/status
   verbs:

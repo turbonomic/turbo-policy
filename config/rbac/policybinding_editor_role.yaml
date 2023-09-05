@@ -2,10 +2,17 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: policybinding-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: turbo-policy
+    app.kubernetes.io/part-of: turbo-policy
+    app.kubernetes.io/managed-by: kustomize
   name: policybinding-editor-role
 rules:
 - apiGroups:
-  - policy.turbonomic.io
+  - policy.turbonomic.io.turbonomic.io
   resources:
   - policybindings
   verbs:
@@ -17,7 +24,7 @@ rules:
   - update
   - watch
 - apiGroups:
-  - policy.turbonomic.io
+  - policy.turbonomic.io.turbonomic.io
   resources:
   - policybindings/status
   verbs:

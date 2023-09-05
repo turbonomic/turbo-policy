@@ -2,11 +2,10 @@
 This repository hosts all Turbonomic custom resource API definitions and manifests.
 
 ## Description
-The following Turbonomic CRDs are defined:
-
-### Turbonomic Policy
-* `policy.turbonomic.io/v1alpha1/slohorizontalscales`
+This project contains the following Turbonomic Kubernetes CustomResourceDefinitions (CRDs):
+* `policy.turbonomic.io/v1alpha1/containerverticalscales`
 * `policy.turbonomic.io/v1alpha1/policybindings`
+* `policy.turbonomic.io/v1alpha1/slohorizontalscales`
 
 ## Getting Started
 ### Install CRDs
@@ -36,7 +35,7 @@ More information can be found via the [Kubebuilder Documentation](https://book.k
 
 ## License
 
-Copyright 2022.
+Copyright 2023.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

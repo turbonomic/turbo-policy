@@ -62,6 +62,7 @@ type SLOHorizontalScale struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
+	// +kubebuilder:validation:XValidation:rule="self.minReplicas <= self.maxReplicas", message="minReplicas must be less than or equal to maxReplicas"
 	Spec   SLOHorizontalScaleSpec   `json:"spec,omitempty"`
 	Status SLOHorizontalScaleStatus `json:"status,omitempty"`
 }
