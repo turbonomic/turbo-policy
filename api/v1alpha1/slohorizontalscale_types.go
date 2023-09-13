@@ -24,15 +24,15 @@ import (
 type SLOHorizontalScaleSpec struct {
 	// The minimum number of replicas of a service
 	// +kubebuilder:validation:Minimum=1
-	// +kubebuilder:validation:Maximum=10000
+	// +kubebuilder:validation:Maximum=10
 	// +kubebuilder:default:=1
 	// +optional
 	MinReplicas *int32 `json:"minReplicas,omitempty"`
 
 	// The maximum number of replicas of a service
 	// +kubebuilder:validation:Minimum=1
-	// +kubebuilder:validation:Maximum=10000
-	// +kubebuilder:default:=10000
+	// +kubebuilder:validation:Maximum=10
+	// +kubebuilder:default:=10
 	// +optional
 	MaxReplicas *int32 `json:"maxReplicas,omitempty"`
 

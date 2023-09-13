@@ -69,17 +69,17 @@ spec:
                     type: string
                 type: object
               maxReplicas:
-                default: 10000
+                default: 10
                 description: The maximum number of replicas of a service
                 format: int32
-                maximum: 10000
+                maximum: 10
                 minimum: 1
                 type: integer
               minReplicas:
                 default: 1
                 description: The minimum number of replicas of a service
                 format: int32
-                maximum: 10000
+                maximum: 10
                 minimum: 1
                 type: integer
               objectives:
