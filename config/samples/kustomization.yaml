@@ -1,0 +1,7 @@
+## Append samples of your project ##
+resources:
+- policy.turbonomic.io_v1alpha1_containerverticalscale.yaml
+- policy_v1alpha1_policybinding_containerverticalscale.yaml
+- policy_v1alpha1_policybinding_slohorizontalscale.yaml
+- policy.turbonomic.io_v1alpha1_slohorizontalscale.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples
